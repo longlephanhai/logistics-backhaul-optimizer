@@ -10,5 +10,6 @@ import { Depot, DepotSchema } from './schema/depot.schema';
   ])],
   controllers: [DepotsController],
   providers: [DepotsService],
+  exports: [DepotsService],
 })
 export class DepotsModule { }

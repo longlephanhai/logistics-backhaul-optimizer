@@ -1,18 +1,9 @@
 import { GeoLocationDto } from '@/depots/dto/create-depot.dto';
 import { Type } from 'class-transformer';
-import {
-    IsEnum,
-    IsMongoId,
-    IsNotEmpty,
-    IsNumber,
-    IsOptional,
-    IsString,
-    Max,
-    Min,
-    ValidateNested
-} from 'class-validator';
+
 import mongoose from 'mongoose';
 import { VehicleStatus, VehicleType } from '../vehicles.type';
+import { IsEnum, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, ValidateNested } from 'class-validator';
 
 export class CreateVehicleDto {
     @IsNotEmpty({ message: 'Biển số xe không được để trống' })

@@ -1,16 +1,5 @@
 import { Type } from 'class-transformer';
-import {
-    ArrayMaxSize,
-    ArrayMinSize,
-    IsArray,
-    IsEnum,
-    IsNotEmpty,
-    IsNumber,
-    IsOptional,
-    IsString,
-    Min,
-    ValidateNested
-} from 'class-validator';
+import { ArrayMaxSize, ArrayMinSize, IsArray, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, ValidateNested } from 'class-validator';
 import { DepotStatus } from '../depots.type';
 
 export class GeoLocationDto {

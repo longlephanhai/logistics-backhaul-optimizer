@@ -91,5 +91,65 @@ export const INIT_PERMISSIONS = [
         "apiPath": "/api/v1/roles/:id",
         "method": "DELETE",
         "module": "ROLES",
+    },
+    {
+        "name": "Create Depot",
+        "apiPath": "/api/v1/depots",
+        "method": "POST",
+        "module": "DEPOTS",
+    },
+    {
+        "name": "Fetch depots with paginate",
+        "apiPath": "/api/v1/depots",
+        "method": "GET",
+        "module": "DEPOTS",
+    },
+    {
+        "name": "Fetch depot by id",
+        "apiPath": "/api/v1/depots/:id",
+        "method": "GET",
+        "module": "DEPOTS",
+    },
+    {
+        "name": "Update Depot",
+        "apiPath": "/api/v1/depots/:id",
+        "method": "PATCH",
+        "module": "DEPOTS",
+    },
+    {
+        "name": "Delete Depot",
+        "apiPath": "/api/v1/depots/:id",
+        "method": "DELETE",
+        "module": "DEPOTS",
+    },
+    {
+        "name": "Create Vehicle",
+        "apiPath": "/api/v1/vehicles",
+        "method": "POST",
+        "module": "VEHICLES",
+    },
+    {
+        "name": "Fetch vehicles with paginate",
+        "apiPath": "/api/v1/vehicles",
+        "method": "GET",
+        "module": "VEHICLES",
+    },
+    {
+        "name": "Fetch vehicle by id",
+        "apiPath": "/api/v1/vehicles/:id",
+        "method": "GET",
+        "module": "VEHICLES",
+    },
+    {
+        "name": "Update Vehicle",
+        "apiPath": "/api/v1/vehicles/:id",
+        "method": "PATCH",
+        "module": "VEHICLES",
+    },
+    {
+        "name": "Delete Vehicle",
+        "apiPath": "/api/v1/vehicles/:id",
+        "method": "DELETE",
+        "module": "VEHICLES",
     }
 ]
