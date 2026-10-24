@@ -1,7 +1,7 @@
-import { Role } from '@/roles/entities/role.entity';
+import { Role } from '@/roles/schema/role.schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument, Types } from 'mongoose';
-import { UserStatus } from '../type';
+import { UserStatus } from '../users.type';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -18,8 +18,8 @@ export class User {
     @Prop({ required: true })
     password: string;
 
-    @Prop({ required: true })
-    phone: string;
+    @Prop({ default: null })
+    phone?: string;
 
     @Prop({ default: null })
     avatar?: string;
@@ -29,6 +29,9 @@ export class User {
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Role.name })
     role: mongoose.Schema.Types.ObjectId;
+
+    @Prop()
+    refreshToken: string;
 
     @Prop({
         type: String,
@@ -55,7 +58,7 @@ export class User {
         email: string;
     };
 
-    @Prop({ default: false, index: true })
+    @Prop({ default: false })
     isDeleted: boolean;
 
     @Prop()

@@ -7,6 +7,7 @@ import { UsersModule } from '@/users/users.module';
 import { AuthModule } from '@/auth/auth.module';
 import { RolesModule } from '@/roles/roles.module';
 import { PermissionsModule } from '@/permissions/permissions.module';
+import { DatabasesModule } from '@/databases/databases.module';
 
 
 
@@ -26,6 +27,7 @@ import { PermissionsModule } from '@/permissions/permissions.module';
     AuthModule,
     RolesModule,
     PermissionsModule,
+    DatabasesModule
   ],
   controllers: [AppController],
   providers: [AppService],

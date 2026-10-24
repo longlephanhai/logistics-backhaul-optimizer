@@ -1,34 +1,53 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { Public, ResponseMessage, User } from '../../decorator/customizr';
+import type { Request, Response } from 'express';
+import type { IUser } from '@/users/users.type';
+import { RegisterUserDto } from '@/users/dto/create-user.dto';
+import { RolesService } from '@/roles/roles.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly roleService: RolesService
+  ) { }
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  @Post('/login')
+  @ResponseMessage('Đăng nhập thành công')
+  login(@Req() req: Request, @Res({ passthrough: true }) response: Response) {
+    return this.authService.login(req.user as IUser, response);
   }
 
-  @Get()
-  findAll() {
-    return this.authService.findAll();
+  @Public()
+  @ResponseMessage("Đăng ký thành công")
+  @Post('/register')
+  handleRegister(@Body() registerUserDto: RegisterUserDto) {
+    return this.authService.register(registerUserDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
+  @ResponseMessage("Get user information")
+  @Get('/account')
+  async handleGetAccount(@User() user: IUser) {
+    const temp = await this.roleService.findOne(user.role._id) as any;
+    user.permissions = temp.permissions;
+    return { user };
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(+id, updateAuthDto);
+  @Public()
+  @ResponseMessage("Get User by refresh token")
+  @Get('/refresh')
+  handleRefreshToken(@Req() request: Request, @Res({ passthrough: true }) response: Response) {
+    const refreshToken = request.cookies["refresh_token"];
+    return this.authService.processNewToken(refreshToken, response);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+  @ResponseMessage("Logout User")
+  @Post('/logout')
+  handleLogout(
+    @Res({ passthrough: true }) response: Response,
+    @User() user: IUser
+  ) {
+    return this.authService.logout(response, user);
   }
 }
