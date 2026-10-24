@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Public, ResponseMessage, User } from '../../decorator/customizr';
 import type { Request, Response } from 'express';
 import type { IUser } from '@/users/users.type';
 import { RegisterUserDto } from '@/users/dto/create-user.dto';
 import { RolesService } from '@/roles/roles.service';
+import { LocalAuthGuard } from './guard/local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -13,6 +14,8 @@ export class AuthController {
     private readonly roleService: RolesService
   ) { }
 
+  @Public()
+  @UseGuards(LocalAuthGuard)
   @Post('/login')
   @ResponseMessage('Đăng nhập thành công')
   login(@Req() req: Request, @Res({ passthrough: true }) response: Response) {
@@ -26,7 +29,7 @@ export class AuthController {
     return this.authService.register(registerUserDto);
   }
 
-  @ResponseMessage("Get user information")
+  @ResponseMessage("Lấy thông tin người dùng thành công")
   @Get('/account')
   async handleGetAccount(@User() user: IUser) {
     const temp = await this.roleService.findOne(user.role._id) as any;
@@ -35,14 +38,14 @@ export class AuthController {
   }
 
   @Public()
-  @ResponseMessage("Get User by refresh token")
+  @ResponseMessage("Lấy token mới thành công")
   @Get('/refresh')
   handleRefreshToken(@Req() request: Request, @Res({ passthrough: true }) response: Response) {
     const refreshToken = request.cookies["refresh_token"];
     return this.authService.processNewToken(refreshToken, response);
   }
 
-  @ResponseMessage("Logout User")
+  @ResponseMessage("Đăng xuất thành công")
   @Post('/logout')
   handleLogout(
     @Res({ passthrough: true }) response: Response,

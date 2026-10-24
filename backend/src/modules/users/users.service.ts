@@ -119,7 +119,7 @@ export class UsersService {
       .limit(defaultLimit)
       .sort(sort as any)
       .select('-password')
-      .populate(population)
+      .populate(population && Object.keys(population).length > 0 ? population : { path: "role", select: { name: 1, _id: 1 } })
       .exec();
 
 
