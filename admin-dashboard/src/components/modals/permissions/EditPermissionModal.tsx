@@ -10,12 +10,12 @@ interface EditPermissionModalProps {
   permission: IPermission | null;
 }
 
-export const EditPermissionModal: React.FC<EditPermissionModalProps> = ({
+export const EditPermissionModal = ({
   isOpen,
   onClose,
   onSuccess,
   permission,
-}) => {
+}: EditPermissionModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [apiPath, setApiPath] = useState('');

@@ -9,11 +9,13 @@ import { DashboardOverviewPage } from './pages/dashboard/DashboardOverviewPage';
 import { UsersPage } from './pages/users/UsersPage';
 import { RolesPage } from './pages/roles/RolesPage';
 import { PermissionsPage } from './pages/permissions/PermissionsPage';
+import { DepotsPage } from './pages/depots/DepotsPage';
+import { VehiclesPage } from './pages/vehicles/VehiclesPage';
 import { ForbiddenPage } from './pages/error/ForbiddenPage';
 import { ServerErrorPage } from './pages/error/ServerErrorPage';
 
 
-const GlobalErrorNavigationListener: React.FC = () => {
+const GlobalErrorNavigationListener = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,6 +79,8 @@ const AppContent = () => {
           <Route path="users" element={<UsersPage />} />
           <Route path="roles" element={<RolesPage />} />
           <Route path="permissions" element={<PermissionsPage />} />
+          <Route path="depots" element={<DepotsPage />} />
+          <Route path="vehicles" element={<VehiclesPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -10,12 +10,12 @@ interface UserDetailModalProps {
   roles: IRole[];
 }
 
-export const UserDetailModal: React.FC<UserDetailModalProps> = ({
+export const UserDetailModal = ({
   isOpen,
   onClose,
   userId,
   roles,
-}) => {
+}: UserDetailModalProps) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(false);
 

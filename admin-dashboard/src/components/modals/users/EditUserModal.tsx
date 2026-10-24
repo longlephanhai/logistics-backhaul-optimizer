@@ -11,13 +11,13 @@ interface EditUserModalProps {
   roles: IRole[];
 }
 
-export const EditUserModal: React.FC<EditUserModalProps> = ({
+export const EditUserModal = ({
   isOpen,
   onClose,
   onSuccess,
   user,
   roles,
-}) => {
+}: EditUserModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

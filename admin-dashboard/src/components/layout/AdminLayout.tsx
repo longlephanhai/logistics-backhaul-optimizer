@@ -13,6 +13,7 @@ import {
   Leaf,
   Activity,
   Layers,
+  Warehouse,
 } from 'lucide-react';
 
 export const AdminLayout = () => {
@@ -30,6 +31,11 @@ export const AdminLayout = () => {
     { to: '/dashboard/users', label: 'Quản Lý Người Dùng', icon: Users },
     { to: '/dashboard/roles', label: 'Vai Trò (Roles)', icon: Shield },
     { to: '/dashboard/permissions', label: 'Ma Trận Quyền Hạn', icon: KeyRound },
+  ];
+
+  const fleetNavItems = [
+    { to: '/dashboard/depots', label: 'Bãi Xe & Trạm (Depots)', icon: Warehouse },
+    { to: '/dashboard/vehicles', label: 'Đội Xe & Phương Tiện', icon: Truck },
   ];
 
   const upcomingModules = [
@@ -70,6 +76,33 @@ export const AdminLayout = () => {
                     key={item.to}
                     to={item.to}
                     end={item.exact}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${isActive
+                        ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-sm'
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                      }`
+                    }
+                  >
+                    <Icon className="w-4 h-4 shrink-0" />
+                    <span>{item.label}</span>
+                  </NavLink>
+                );
+              })}
+            </nav>
+          </div>
+
+          <div>
+            <div className="px-3 mb-2 text-[10px] font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>Hạ Tầng Vận Tải</span>
+              <span className="px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 text-[9px] font-mono">NEW</span>
+            </div>
+            <nav className="space-y-1">
+              {fleetNavItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${isActive
                         ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-sm'

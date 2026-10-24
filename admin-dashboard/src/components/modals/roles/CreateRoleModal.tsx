@@ -8,11 +8,11 @@ interface CreateRoleModalProps {
   onSuccess: () => void;
 }
 
-export const CreateRoleModal: React.FC<CreateRoleModalProps> = ({
+export const CreateRoleModal = ({
   isOpen,
   onClose,
   onSuccess,
-}) => {
+}: CreateRoleModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');

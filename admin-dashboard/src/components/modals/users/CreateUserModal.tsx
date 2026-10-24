@@ -10,12 +10,12 @@ interface CreateUserModalProps {
   roles: IRole[];
 }
 
-export const CreateUserModal: React.FC<CreateUserModalProps> = ({
+export const CreateUserModal = ({
   isOpen,
   onClose,
   onSuccess,
   roles,
-}) => {
+}: CreateUserModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

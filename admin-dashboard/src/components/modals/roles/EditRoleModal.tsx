@@ -10,12 +10,12 @@ interface EditRoleModalProps {
   role: IRole | null;
 }
 
-export const EditRoleModal: React.FC<EditRoleModalProps> = ({
+export const EditRoleModal = ({
   isOpen,
   onClose,
   onSuccess,
   role,
-}) => {
+}: EditRoleModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');

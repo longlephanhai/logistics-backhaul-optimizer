@@ -9,11 +9,11 @@ interface CreatePermissionModalProps {
   onSuccess: (created: IPermission) => void;
 }
 
-export const CreatePermissionModal: React.FC<CreatePermissionModalProps> = ({
+export const CreatePermissionModal = ({
   isOpen,
   onClose,
   onSuccess,
-}) => {
+}: CreatePermissionModalProps) => {
   const [submitting, setSubmitting] = useState(false);
   const [name, setName] = useState('');
   const [apiPath, setNewApiPath] = useState('');

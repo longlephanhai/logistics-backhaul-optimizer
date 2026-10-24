@@ -9,11 +9,11 @@ interface RoleDetailModalProps {
   roleId: string | null;
 }
 
-export const RoleDetailModal: React.FC<RoleDetailModalProps> = ({
+export const RoleDetailModal = ({
   isOpen,
   onClose,
   roleId,
-}) => {
+}: RoleDetailModalProps) => {
   const [role, setRole] = useState<IRole | null>(null);
   const [loading, setLoading] = useState(false);
 
