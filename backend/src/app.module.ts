@@ -8,6 +8,9 @@ import { AuthModule } from '@/auth/auth.module';
 import { RolesModule } from '@/roles/roles.module';
 import { PermissionsModule } from '@/permissions/permissions.module';
 import { DatabasesModule } from '@/databases/databases.module';
+import { VehiclesModule } from '@/vehicles/vehicles.module';
+import { DepotsModule } from '@/depots/depots.module';
+
 
 
 
@@ -27,7 +30,9 @@ import { DatabasesModule } from '@/databases/databases.module';
     AuthModule,
     RolesModule,
     PermissionsModule,
-    DatabasesModule
+    DatabasesModule,
+    VehiclesModule,
+    DepotsModule
   ],
   controllers: [AppController],
   providers: [AppService],
