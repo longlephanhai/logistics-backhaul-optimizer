@@ -151,5 +151,41 @@ export const INIT_PERMISSIONS = [
         "apiPath": "/api/v1/vehicles/:id",
         "method": "DELETE",
         "module": "VEHICLES",
+    },
+    {
+        "name": "Create Order",
+        "apiPath": "/api/v1/orders",
+        "method": "POST",
+        "module": "ORDERS",
+    },
+    {
+        "name": "Fetch orders with paginate",
+        "apiPath": "/api/v1/orders",
+        "method": "GET",
+        "module": "ORDERS",
+    },
+    {
+        "name": "Fetch order by id",
+        "apiPath": "/api/v1/orders/:id",
+        "method": "GET",
+        "module": "ORDERS",
+    },
+    {
+        "name": "Update Order",
+        "apiPath": "/api/v1/orders/:id",
+        "method": "PATCH",
+        "module": "ORDERS",
+    },
+    {
+        "name": "Delete Order",
+        "apiPath": "/api/v1/orders/:id",
+        "method": "DELETE",
+        "module": "ORDERS",
+    },
+    {
+        "name": "Cancel Order",
+        "apiPath": "/api/v1/orders/:id/cancel",
+        "method": "PATCH",
+        "module": "ORDERS",
     }
 ]

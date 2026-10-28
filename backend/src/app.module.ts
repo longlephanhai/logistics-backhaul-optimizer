@@ -10,6 +10,7 @@ import { PermissionsModule } from '@/permissions/permissions.module';
 import { DatabasesModule } from '@/databases/databases.module';
 import { VehiclesModule } from '@/vehicles/vehicles.module';
 import { DepotsModule } from '@/depots/depots.module';
+import { OrdersModule } from '@/orders/orders.module';
 
 
 
@@ -32,7 +33,8 @@ import { DepotsModule } from '@/depots/depots.module';
     PermissionsModule,
     DatabasesModule,
     VehiclesModule,
-    DepotsModule
+    DepotsModule,
+    OrdersModule
   ],
   controllers: [AppController],
   providers: [AppService],
